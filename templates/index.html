@@ -1,0 +1,128 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Summarization</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+	<!-- Goggle Font -->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+
+	<!-- Font Css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+	<!-- Animation Css -->
+	<link rel="stylesheet" href="css/animate.css">
+
+
+</head>
+<body>
+<!-- Header -->
+<div class="header-div">
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header logo-div bounceInLeft wow" data-wow-duration="2s">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Text Summarization And keyword Extraction</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse top-right-menu-ul bounceInRight wow" id="bs-example-navbar-collapse-1" data-wow-duration="4s">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'admin_login' %}">Admin</a></li>
+        <li><a href="{% url 'user_login' %}">Users</a></li>
+        <li><a href="#About">About Us</a></li>
+        <li><a href="">Home</a></li>
+      </ul>
+    </div><!-- End navbar-collapse -->
+  </div><!-- End container -->
+</nav>
+
+<div class="container wow bounceInDown" data-wow-duration="5s">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 text-center slide-text">
+			<h1>Text Summarization And Keyword Extraction</h1>
+<p>Summarization of any data plays a vital role in integrating
+central ideas in a meaningful way and to ignore irrelevant
+information. Keywords drawn out of the summary helps in undeclining
+the main idea of the document. It saves adequate
+time for different domains of use cases like marketing,
+institutions, education, business etc. Data mining involves the
+process of generating new data by evaluating already existing
+large data sets. Classification, clustering, regression,
+association, outlier detection, prediction, tracking sequential
+patterns are the techniques used for data mining. The raw data
+is converted into useful information using these techniques.
+Web mining is the procedure of one of the data mining
+techniques which emphasize on the World Wide Web and its
+components as the primary source of data.</p>
+        </div><!-- End col-md-8-->
+		<div class="col-md-offset-2"></div><!-- End col-md-offset-2 -->
+	</div><!-- End Row -->
+</div><!-- End Contanier -->
+
+</div><!-- End header-div -->
+
+
+
+
+<!-- About -->
+<div class="container" id="About">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="main_heading">
+				<h1>About us</h1>
+				<div  class="text-center"><span class="underline"></span></div>
+			</div>
+		</div><!-- End col-md-12 -->
+	</div><!-- End row -->
+
+
+<p>
+    The process of gaining and absorbing the knowledge
+from various sources is a time-consuming process where people,
+mainly youth spend time surfing over the internet for relevant
+information. The proposed system mainly focuses on scraping
+the data from websites and providing the summary as well as
+keywords from the information extracted from various websites
+giving the user flexibility to select the website of their choice. The
+proposed system for the text summarization and keyword
+extraction undergoes a sequence of steps starting from data
+extraction from a website link, removal of outliers and irrelevant
+information, emphasizing on the importance of particular data
+extracted from the website and creating a summary of the
+extracted data. For the selection of relevant information from the
+extracted data, it is necessary to use natural language processing.
+The proposed project helps its users to reduce their surfing time
+and gives summary prepared from multiple website links and
+documents or keywords from a particular website or a
+document.
+</p>
+
+</div><!-- End container -->
+<!-- End About -->
+
+
+
+
+
+<script type="text/javascript" src="{% static 'js/jquery-main.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+
+<script>
+	new WOW().init();
+</script>
+
+</body>
+</html>

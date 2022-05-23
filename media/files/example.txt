@@ -1,0 +1,465 @@
+An Industry Oriented Major Project Report (CS801PC)
+On
+TEXT AND IMAGE TEXT SUMMARIZATION AND KEYWORD EXTRACTION USING NATURAL LANGUAGE PROCESSING
+
+Submitted
+
+in partial fulfillment of the requirements for the award of the degree of
+Bachelor of Technology
+in
+Computer Science and Engineering
+by
+
+Mr. Chittanuri Sai Krishna(17261A0567)
+
+Under the Guidance of
+
+Ms. Gousiya Begum (Assistant Professor)
+
+
+Department of Computer Science and Engineering MAHATMA GANDHI INSTITUTE OF TECHNOLOGY
+GANDIPET, HYDERABAD - 500075, INDIA
+
+2020 - 2021
+ 
+MAHATMA GANDHI INSTITUTE OF TECHNOLOGY
+(Affiliated to Jawaharlal Nehru Technological University Hyderabad)
+GANDIPET, HYDERABAD - 500075, Telangana (INDIA)
+
+CERTIFICATE
+
+
+This is to certify that  the  Industry  Oriented  Major  Project  (CS801PC)  entitled      “Text and Image Text Summarization and Keyword Extraction Using Natural Language         Processing” is being submitted  by  Chittanuri Sai Krishna bearing Roll no: 17261A0567 in      partial fulfillment for the award of Bachelor   of    Technology    in    Computer    Science    and    Engineering    to Jawaharlal Nehru Technological University, Hyderabad is a record of bonafide work carried out by him under our guidance and supervision.
+
+
+
+
+
+
+
+Supervisor	Head of the Department
+
+Ms. Gousiya Begum,	
+Dr. C.R.K. Reddy,
+Assistant Professor	Professor & HoD
+
+
+
+
+
+
+
+
+
+External Examiner
+ 
+DECLARATION
+
+
+This is to certify that the work reported in this Industry Oriented Mini project titled “Text and Image Text Summarization and Keyword Extraction Using Natural Language           Processing” is a record of work done by me in the Department of Computer Science and Engineering, Mahatma Gandhi Institute of Technology, Hyderabad.
+No part of this work is copied from books/journals/internet and wherever the portion is taken, the same has been duly referred in the text. This report is based on the work done entirely by me and not copied from any other source.
+
+The results embodied in this project have not been submitted to any other University or Institution for the award of any degree or diploma.
+
+
+
+
+
+
+
+
+
+Ch. Sai Krishna Roll No: 17261A0567
+ 
+ACKNOWLEDGEMENT
+
+
+The satisfaction that accompanies the successful completion of any task would be incomplete without the mention of people who made it possible because success is the abstract of hard work and perseverance, but steadfast of all is encouraging guidance. So, I acknowledge all those whose guidance and encouragement served as a beacon light and crowned my efforts with success.
+
+
+I would like to express my sincere thanks to Dr. K Jaya Sankar, Principal, MGIT, for providing the working facilities in college.
+
+
+I wish to express my sincere thanks and gratitude to Dr. C.R.K. Reddy, Professor and HoD, Department of CSE, MGIT, for all the timely support and valuable suggestions during the period of the project.
+
+
+I am extremely thankful to Dr. A. Nagesh, Professor and Dr. M. Sreevani, Associate Professor, Department of CSE, Industry Oriented Mini Project Coordinators, MGIT, for their encouragement and support throughout the project.
+
+I am extremely thankful to my internal guide Ms. Gousiya Begum, Assistant Professor, Department of CSE, for her constant guidance, encouragement and moral support throughout the project.
+
+Finally special thanks to my family members for their support and encouragement throughout my project work. Thanks to all my friends and well-wishers for their constant support.
+
+
+
+
+
+
+
+
+Ch. Sai Krishna Roll No: 17261A0567
+ 
+TABLE OF CONTENTS	
+Certificate	i
+Declaration	ii
+Acknowledgement	iii
+List of Figures	vi
+List of Tables	vi
+Abstract	vii
+1.	Introduction	1
+1.1 Existing System	1
+1.2 Proposed System	2
+1.3 Requirements Specification	3
+2.	Literature Survey	5
+3.	Methodology 	7
+3.1	System Architecture
+3.2	Module Description                                                                                           
+3.2.1 Beautiful Soup
+3.2.2 Pytesseract
+3.2.3 Gensim
+               3.3 Algorithms
+                    3.3.1 Heap Queue Algorithm                                                                                 
+                    3.3.2 Text Rank Algorithm
+
+
+4.	System Design	12
+4.1 UML Diagrams	12
+4.1.1 Use Case Diagram	12
+4.1.2 Sequence Diagram 	13
+    4.1.3 State Diagram	15
+	7
+9
+9
+9
+9
+10
+10
+11
+
+12
+12
+12
+13
+15
+
+
+
+
+
+
+
+
+
+	
+
+ 
+LIST OF FIGURES
+
+Figure 3.1
+Figure 3.2
+Figure 4.1	Working Diagram of Summarization
+Working Diagram of Keyword Extraction
+Use case Diagram	7
+8
+12
+Figure 4.2	Sequence Diagram	13
+Figure 4.3	State Diagram	15
+ 
+                                        LIST OF TABLES
+
+
+Table 1	Literature survey of Text and Image Text summarization and Keyword Extraction Using NLP
+	7
+		
+ 
+ABSTRACT
+
+
+                 Text summarization is the technique to identify the most useful and necessary information in a text. Given the increase in the size of data an efficient, automatic text summarizer is needed. The process of gaining and absorbing the knowledge from various sources is a tedious and time consuming process, where users spend a lot of time surfing over Internet for relevant information, extracted from various websites giving the user flexibility to select the website of their choice.
+
+                 The proposed system for text summarization and keyword extraction undergoes a sequence of steps starting from data extraction from a website link, document or text from images, removes outliers and   irrelevant information, emphasizing on the importance of particular data extracted from the website   and creating summary of the extracted data. For the selection of relevant information from extended data it is necessary to use Natural language processing. The Natural language toolkit library module is used for Natural Language processing. The algorithms used are TextRank algorithm and heap queue algorithm for text summarization and PageRank algorithm is used for keywords extraction. It uses beautiful soup module in Python for parsing data from websites and Pytesseract is used for optical character recognition for acquiring data from text images.  The proposed project helps users to reduce their surfing time and gives summary prepared from multiple website links and documents or keywords from a particular website or document.
+
+ 
+1.	INTRODUCTION
+
+
+
+
+1.1	Existing system:
+
+                                       There are good number of models exist for Text Summarization purpose but in existing systems, they have complex code and takes large amount of time. Existing systems include Graph based, Cluster based, Vector space based algorithms.
+
+Disadvantages in Existing System:
+
+•	Difficult to learn and use.
+•	Slow.
+•	Only splits text by sentences, without analysing the semantic structure.
+•	Poor performance.
+•	It's great for initial prototyping in almost every NLP project. Unfortunately, it inherits the low performance from NLTK and therefore it's not good for large scale production usage.
+ 
+1.2 Proposed System:
+ 
+          The Proposed System summarizes not only a single website link but multiple links and also single or multiple documents and summarizes data in images through Text rank algorithm and Heap Queue Algorithm. Keyword extraction is also implemented with the help of Text rank algorithm. For implementing these algorithms, Python modules such as beautiful soup, Pytesseract and Gensim are used. User may input a website link or upload a document and keywords will be extracted. A total number of keywords extracted depends upon the size of the document. The proposed system also gives the flexibility to the user to input direct text in the text area through which keywords can be extracted or text can be summarized based on the user’s choice. 
+
+        The proposed system consists of the following advantages:
+                    Advantages of Proposed System:
+
+•	To extract textual data from any link chosen by the user and display its summary.
+•	To summarize textual data from multiple web pages at once.
+•	To let the user decide if a summary of one link or multiple links is required
+•	To implement keyword extraction as functionality 
+•	To implement multi-document summarization to generate summary out of documents present in different formats such as pdf and word.
+•	Advantage of Genism is that, it let us handle large text files even without loading the whole file in memory. 
+•	Genism doesn't require costly annotations or hand tagging of documents because it uses unsupervised models.
+
+ 
+1.3 Requirements Specification:
+
+1.3.1 Software Specifications:
+
+
+Operating System	           :	Windows 10
+Technologies and Language used 	:	Python 
+IDE	           :	Django
+
+
+1.3.2 Hardware Requirements:
+	   
+RAM	:	8 GB
+Hard Disk	:	Minimum 1 TB 
+Processor                     :           i5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+2.	LITERATURE SURVEY
+
+[1]	“Improvement of Text Summarization using Fuzzy Logic Based Method.”, Professor. Shishir Dixit,2020 International Organization of Scientific Research of Computer Engineering.  In this paper author has used the Fuzzy Logic Based method for summarization. For the summarization the author has used Fuzzy Centroid and for keyword Extraction has used sentence score.
+
+[2]	"Text Image Extraction and Summarization", Neha Joshi, Asian Journal of Convergence on Technology , 2019 .In this paper author has divided into two main parts Image Processing and Summarization. For image processing OCR module from Python is used and for summarization Text Analysis is done.
+ 
+[3]	" Extractive text summarization using Sentence Ranking ", J.N. Madhuri, Ganesh Kumar, International Conference for Institute of Electrical and Electronics Engineers, 2019. In this paper, the text is summarized from documents using sentence ranking and is also converted into audio format  for listening. The algorithm used in this paper is Sentence Ranking Algorithm.
+ 
+[4]	“Centroid based summarization of multiple documents”, R. Radev, International Conference on Advanced Computing and Communication Systems (ICACCS -2018), 2018.In this paper author presents a multi-document summarizer,  called MEAD, which generates summaries using cluster centroids produced by a topic detection  and tracking system. It also describes techniques based  on  sentence utility and subsumption.
+
+[5]	“Automatic Text Summarization of news articles”, Prakhar Sethi, Sameer, International Conference on Big Data.2017.In this paper author proposes a technique of  Text Summarization which focuses on the problem of identifying the most important portions of the text and producing coherent summaries. In  this  the author presents an algorithm  to generate  text summary using lexical chains and using the WordNet Thesaurus.
+
+[6]	“Document Summarization using Conditional random fields.”, Dou Shen, International  Joint Conferences on Artificial Intelligence,2017.In this paper author presents a Conditional Random Fields based framework to use merits of supervised learning and unsupervised learning approaches avoiding their disadvantages. It considers summarization task as a sequence labeling problem  .Each document is considered as a sequence of sentences and the summarization procedure labels the sentences by 1 and 0.The label of the sentence depends on the assignment of labels of others. Detailed analysis of the improvement is presented as well.
+
+[7]	“Graph based approach for Automatic Text Summarization”Akash Ajampura Natesh, International  Journal of Advanced Research in Computer and Communication,2016.In this paper, author presents a graph based approach for automatic text  summarization. This approach uses the concept of computing how closely,significant words are related to each other and produces high quality summaries.
+
+
+
+[8]	  “Bayesian learning in Text Summarization” Tadashi Nomoto, Proceedings of Human Language Technology Conference and Conference on Empirical methods in Natural Language Processing ,2016.In this paper, author presents a Bayesian model for Text Summarization  which explicitly encodes and exploits information on how human judgements are distributed over the text. Comparisons are made against non Bayesian summarizers, using Test data from Japanese new texts. 
+
+S No	Year	Author	Title	Techniques	Advantages 	Disadvantages
+1.	2020	Shishir Dixit	Improvement of Text Summarization using Fuzzy Logic Based Method.	Fuzzy Logic Based approach	Improved quality in summary by maintaining coherency	Membership Function and work of the fuzzy logic system.
+2,	2019	Neha Joshi	Text Image extraction and summarization.	Optical Character Recognition for image text extraction and removing noise from the image 	1.Can Summarize data from screenshots of text.
+2.Can summarize data based on the number of lines required for summarization	1.Cannot summarize documents.
+2.Fails when the image clarity is low.
+3.	2019	J.N. Madhuri, Ganesh Kumar	Extractive text summarization using Sentence Ranking	Sentence Ranking	Converts data into summary and also converts the data into an audio format.	Can only summarize documents with limited number of sentences.
+ 4.	2018	R. Radev	Centroid based summarization of multiple documents	MEAD Summarizer is used to implement Centroid based algorithm, Redundancy   based algorithm	Can Summarize multiple documents at a time.	Cannot summarize larger corpus of data.
+5.	2017	Prakhar Sethi, Sameer	Automatic Text Summarization of news articles	Lexical Chains and Wordnet Thesaurus 	Summarization is short and relevant as it summarizes news articles which are structured.	1.Sumarizes only news articles which have less information.
+2.Only nouns are added to Lexical chains, adjectives also play a major role in summarization.
+6.	2017	Dou Shen	Document Summarization using Conditional random fields.	Conditional Random fields.	Identifies correct features and provides better representation of sentences and groups appropriately into its segments	1.Focuses on domain specific which requires an external specific corpus for training step.
+2.Linguistic features are not considered.
+7.	2016	Akash Ajampura Natesh	Graph based approach for Automatic Text Summarization.	Graph based approach	1.Captures redundant information
+2.Improves coherency	Doesn’t focus on issues such as dangling anaphora problem.
+8.	2016	Tadashi Nomoto	Bayesian learning in Text Summarization	Machine Learning approach Bayes Rule	Large set of training data improves the sentence selection for summary	Human interruption required for generating manual summaries.
+
+
+                          Table 1: Literature Survey of Text and Image Text Summarization and Keyword Extraction using NLP
+
+
+   
+3.METHODOLOGY
+
+
+3.1	SYSTEM ARCHITECTURE
+
+
+The project is built using the Django framework. When the user enters a website link or uploads a document for summarization, the application starts the process and scrapes all the textual data from the link(s) or the document(s) using Beautiful Soup text mining python module. Cleaning step involves removal of outliers and stop-words which is done using NLTK(Natural Language Toolkit) package available for python. Tokenization of sentences involves each word to get stored in an array where sentence acts as a node and each node has a weight assigned to it. Each sentence is a node for Text rank algorithm.  Heap Queue algorithm used in natural language processing retrieves the thirty percent that is three-tenth of the total number of sentences of the extracted text. This forms the summary of the extracted textual data. User has the option to choose whether the required summary should be a combined summary of all the documents or links given as an input or a separate summary of each input link or document is required by the user. In the case of combined summary, textual data from each link or document is combined first and it is summarized.
+
+
+\
+
+                    Figure 3.1 Summarization Diagram
+Keyword extraction is based on Text rank algorithm and begins with dividing the text into sentences. These sentences are divided into words. Stop words are removed from the words and then these words are assigned specific Part-Of Speech tags. SpaCy is used for generating these tags. Words of the sentences in pair form edge of the directed graph and Text rank graph is plotted. This is explained in the implementation of keyword extraction in detail.
+
+ 
+
+
+   
+                    Figure 3.2  Architecture of Keyword Extraction  
+ 
+
+3.2	Module Description
+
+3.2.1 Beautiful Soup
+
+Beautiful Soup is a Python library for pulling data out of HTML and XML files. It works with your favorite parser to provide idiomatic ways of iterating, searching, and modifying the parse tree. It commonly saves programmers hours or days of work. Beautiful Soup helps you pull particular content from a webpage, remove the HTML markup, and save the information. It is a tool for web scraping that helps you clean up and parse the documents you have pulled down from the web.
+The data in the weblinks is stored in HTML or XML tags Beautiful soup is used to retrieve and summarize information present in the tags.
+
+In this project. this module is used for scrapping the data received from URL so that only text from the URL is taken as input and others are omitted. 
+
+3.2.2 Pytessaract
+
+ Python-tesseract is an optical character recognition (OCR) tool for python. That is, it will recognize and “read” the text embedded in images. Python-tesseract is a wrapper for Google’s Tesseract-OCR Engine. It is also useful as a stand-alone invocation script to tesseract, as it can read all image types supported by the Pillow  imaging libraries, including JPEG, PNG, GIF, BMP, TIFF, and others. Additionally, if used as a script, Python-tesseract will print the recognized text instead of writing it to a file.
+In this project, this module is used for extracting data from images which are in the form of JPEG, PNG and this extracted data is summarized and keywords are extracted from it.
+3.2.3 Gensim
+          Genism is an open-source Python library for unsupervised topic modelling and advanced natural online algorithms, which differentiates it from most  other machine learning software packages that target only in memory processing.
+          In this project, this module is used to implement Text Rank and Heap Queue algorithm for summarization and extraction of data.
+
+
+
+
+3.3 Algorithms 
+
+3.3.1 Heap Queue Algorithm
+
+          A heap is a semi-ordered tree-based data structure where either:
+i)	Each parent’s key is greater than its children(a max heap-largest element on top).
+                ii)   On each parent’s key is less than its children(a min heap-smallest element on top).
+
+This implementation uses arrays for which heap[k] <= heap[2*k+1] and heap[k] <= heap[2*k+2] for all k, counting elements from zero. For the sake of comparison, non-existing elements are considered to be infinite. The interesting property of a heap is that its smallest element is always the root, heap[0].
+The following functions are provided:
+a)	heapq.heappush(heap, item)
+b)	Push the value item onto the heap, maintaining the heap invariant.
+c)	heapq.nlargest(n, iterable, key=None)
+d)	Return a list with the n largest elements from the dataset defined by iterable. key, if provided, specifies a function of one argument that is used to extract a comparison key from each element in iterable (for example, key=str.lower). Equivalent to: sorted(iterable, key=key, reverse=True)[:n].
+
+•	Heap Queue Algorithm  is used to retrieve the 30% of the  total  extracted text by using heapify function in Python.
+•	In this algorithm Heap Pop Function is used to remove and return the smallest element from the Heap.
+•	Heap Push Function is used to push the element into the heap.
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.3.2 Text Rank Algorithm
+
+•	Text rank algorithm is a specific application of the Page rank algorithm. 
+•	The first step of the algorithm is to clean up the text. This is because the text is often noisy and full of irregularities. 
+•	One can apply character filters to remove all the stop words. Once the text is cleaned, the next step is to break that text up into tokens or possible keywords. 
+•	Words are broken up into tokens based on whitespaces and punctuations.
+•	Once the words are broken into tokens, the next step is to filter out some of those tokens which would not make good keywords. For this purpose, part-of-speech tagging is used. In part-of-speech tagging, sentences are split into words. These words are categorized as noun, pronoun, adverb, verb.
+•	This is followed by stop words removal, which is done by stop word filter which removes the common stop words. The minimum length token filter removes the words that have two characters or less. Once the text is filtered, a graph is constructed. The graph is made based on the dependency between the two words when they cooccur. It consists of nodes which are considered as tokens.
+
+
+
+
+
+
+
+ 
+4.SYSTEM DESIGN
+
+4.1 UML DIAGRAMS
+
+4.1.1 USE CASE DIAGRAM
+
+
+The proposed system is a website consisting of Front-End with which the user interacts and a Back-End which processes all the textual information depending upon the request of the user.
+
+
+ 
+
+Figure 4.1 Use Case diagram
+
+
+
+Figure 4.1 shows the Use Case when the user visits the website and selects one of the many features provided by the website. The input taken from the user is stored temporarily in the database until all the processes are performed and the final output is displayed on the website.
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.1.2 SEQUENCE DIAGRAM
+
+
+  
+
+
+
+	Figure 4.2 Sequence Diagram
+
+
+As shown in Figure 4.2 the following are the steps mentioned in sequence diagram:
+
+1.	Firstly User is requested to give input to program.
+
+2.	User input will be taken from GUI and passed on to summarization algorithm.
+
+3.	Python libraries will be requested.
+
+4.	Python libraries will be imported.
+
+5.	Sentences in document will be converted into words .
+
+6.	Stop words will be removed.
+
+7.	Word tokenization takes place.
+
+8.	Word Frequency will be calculated and normalised.
+
+9.	Sentence tokenization occurs and sentence scores will be calculated.
+
+10.	Based on sentence scores output is generated.
+
+11.	The summarized data is sent to user via output screen.
+
+
+  
+            4.1.3 STATE DIAGRAM
+
+ 
+
+Figure 4.3 State Diagram
+
+As shown in Figure 4.3 the control flow is drawn from one operation to another. This flow can be sequential, branched, or concurrent. State Chart diagrams deal with all type of flow control by using different elements such as fork , join and via tr 
+ 
+ 
+ 
+ 
+ 
+

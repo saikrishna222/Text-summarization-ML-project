@@ -1,0 +1,38 @@
+{% if data %}
+
+                    <table border="2px" class="table table-hover table-dark">
+                    <thead>
+                    <tr class="table-danger">
+                        <th scope="col"> Document Number</th>
+                        <th scope="col">User Mail</th>
+                        <th scope="col">File Name</th>
+                        <th scope="col">Summarized Content</th>
+                        <th scope="col">Keywords</th>
+                        <th scope="col">Words In Total Content</th>
+                        <th scope="col">Words In Summarized Content</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in data %}
+                    <tr scope="row" style="color: BLUE; background-color:#FFFCBB">
+                        <td>{{ x.dno}}</td>
+                        <td>{{ x.user_mail }}</td>
+                        <td>{{ x.document_link }}</td>
+                        <td>{{ x.summarized_content }}</td>
+                        <td>{{ x.content_keywords }}</td>
+                        <td>{{ x.len_total_content }}</td>
+                        <td>{{ x.len_summarized_content }}</td>
+                        <td><a href="{% url 'deletedocumentdata' %}?id={{ x.dno}}">Yes</a></td>
+                    </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+{% else %}
+    <h2>No Summarized Data To See...!</h2>
+                {% endif %}
+<center>
+    <a href="{% url 'userhome' %}"><h2>Back to UserHome</h2></a>
+</center>

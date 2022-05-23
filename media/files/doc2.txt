@@ -1,0 +1,934 @@
+IEEE International Conference on Computer, Communication, and Signal Processing (ICCCSP-2017)
+
+A Survey on Extractive Text Summarization
+
+N.Moratanch”,S.Chitrakala *
+*Research Scholar, Associate Professor
+**Department of CSE
+Anna University,CEG,Chennai
+*tancyanbil @ gmail.com, ' au.chitras @gmail.com
+
+Abstract—Text Summarization is the process of obtaining
+salient information from an authentic text document. In this
+technique, the extracted information is achieved as a summarized
+report and conferred as a concise summary to the user. It is very
+crucial for humans to understand and to describe the content
+of the text. Text Summarization techniques are classified into
+abstractive and extractive summarization. The extractive summa-
+rization technique focuses on choosing how paragraphs,important
+sentences, etc produces the original documents in precise form.
+The implication of sentences is determined based on linguistic
+and statistical features. In this work, a comprehensive review
+of extractive text summarization process methods has been
+ascertained. In this paper, the various techniques, populous
+benchmarking datasets and challenges of extractive summariza-
+tion have been reviewed. This paper interprets extractive text
+summarization methods with a less redundant summary, highly
+adhesive, coherent and depth information.
+
+Index Terms—Text Summarization, Unsupervised Learning,
+Supervised Learning, Sentence Fusion, Extraction Scheme, Sen-
+tence Revision, Extractive Summary
+
+I. INTRODUCTION
+
+In a recent advance, the significance of text summarization
+[1] accomplishes more attention due to data inundation on
+the web. Hence this information overwhelms yields in the
+big requirement for more reliable and capable progressive text
+summarizers. Text Summarization gains its importance due to
+its various types of applications just like the summaries of
+books, digest- (summary of stories), the stock market, news,
+Highlights- (meeting, event, sport), Abstract of scientific pa-
+pers, newspaper articles, magazine etc. Due to its tremendous
+growth, many finest universities like Faculty of Informatics
+- Masaryk University, Czech Republic, Concordia University,
+Montreal, Canada- Semantic Software Lab, IHR Nexus Lab
+at Arizona State University, Arizona, USA and finally Lab of
+Topic Maps-Leipzig University, Germany has been persistently
+working on its rapid enhancements.
+
+Text summarization has grown into a crucial and appropriate
+engine for supporting and illustrate text content in the latest
+speedy emergent information age. It’s far very complex for
+humans to physically summarize oversized documents of
+text. There is a wealth of textual content available on the
+internet. But, usually, the internet contribute more data than
+is desired. Therefore, a twin problem is detected: Seeking for
+appropriate documents through an awe-inspiring number of
+reports offered, and fascinating a high volume of important
+information. The objective of automatic text summarization is
+to condense the origin text into a precise version preserves
+
+978-1-5090-3716-2/17/$31.00 ©2017 IEEE
+
+its report content and global denotation. The main advantage
+of a text summarization is reading time of the user can be
+reduced. A marvelous text summary system should reproduce
+the assorted theme of the document even as keeping repetition
+to a minimum. Text Summarization methods are publicly
+restricted into abstractive and extractive summarization.
+
+An extractive summarization technique consists of selecting
+vital sentences, paragraphs, etc, from the original manuscript
+and concatenating them into a shorter form. The significance
+of sentences is strongly based on statistical and linguistic
+features of sentences. This paper generally summarizes the
+extensive methodologies fitted, issues launch, exploration and
+future directions in text summarization. This paper [1] is
+organized as follows. Section 2 depicts about the features for
+extractive text summarization, Section 3 describes extractive
+text summarization methods, Section 4 illustrate inferences
+made, Section 5 represent challenges and future research
+directions, Section 6 detail about evaluation metrics and the
+final sketch is the conclusion.
+
+II. FEATURES FOR EXTRACTIVE TEXT
+SUMMARIZATION
+
+Earlier techniques involve assigning a score to sentences
+based on a countenance that are predefined based on the
+methodology applied. Both word level and sentence level
+features are employed in text summarization literature. Certain
+features discussed are [2] [3] [4]Jused to exclusive sentences
+to be included in the summary are:
+
+1. WORD LEVEL FEATURES
+
+1.1 Content Word feature
+
+Keywords are essential in identifying the importance of the
+sentence. The sentence that consists of main keywords is most
+likely included in the final summary. The content (keyword)
+words are words that are nouns, verbs, adjectives and adverbs
+that are commonly determined based on tf x idf measure.
+
+1.2 Title Word feature
+
+The sentences in the original document which consists of
+words mentioned in the title have greater chances to contribute
+to the final summary since they serve as indicators of the theme
+of the document.
+IEEE International Conference on Computer, Communication, and Signal Processing (ICCCSP-2017)
+
+1.3 Cue phrase feature
+
+Cue phrases are words and phrases that indicate the struc-
+ture of the document flow and it is used as a feature in
+sentence selection. The sentence that contains cue phrases
+(e.g. “denouement”, “because”, "this information", "summary",
+"develop", “desire” etc.) are mostly to be included in the final
+
+summary.
+
+1.4 Biased word feature
+
+The sentences that consist of biased words are more likely
+important. The biased words are a list of the predefined set
+of words that may be domain specific. They are relatively
+important words that describe the theme of the document.
+
+1.5 Upper case word feature
+
+The words which are in uppercase such as "UNICEF" are
+considered to be important words and those sentences that
+consist of these words are termed important in the context of
+sentence selection for the final summary.
+
+2. SENTENCE LEVEL FEATURES
+2.1 Sentence location feature
+
+The sentences that occur in the beginning and the conclusion
+part of the document are most likely important since most
+documents are hierarchically structured with important infor-
+mation in the beginning and the end of the paragraphs.
+
+2.2 Sentence length feature
+
+The sentence length plays an important role in identifying
+key sentences. Shorter texts do not convey essential informa-
+tion and very long sentences also need not be included in the
+summary. The normalized length of the sentence is calculated
+as the ratio between a number of words in the sentence to the
+number of words in the longest sentence in the document.
+
+2.3 Paragraph location feature
+
+Similar to sentence location, paragraph location also plays
+a crucial role in selecting key sentences. A Higher score is
+assigned to the paragraph in the peripheral sections (beginning
+and end paragraphs of the document).
+
+2.4 Sentence-to-Sentence Cohesion
+
+The cohesion between sentences for every sentence(s), the
+similarity between s and alternative sentences are calculated
+which are summed up and coarse value of the aspect is
+obtained for s. The feature values are normalized between
+[0, 1] where value closer to 1.0 indicates a higher degree of
+cohesion between sentences.
+
+I. EXTRACTIVE TEXT SUMMARIZATION
+METHODS
+
+Extractive Text Summarization methods can be broadly
+classified as Unsupervised Learning and Supervised learning
+methods. Recent works rely on Unsupervised Learning meth-
+ods for text summarization.
+
+978-1-5090-3716-2/17/$31.00 ©2017 IEEE
+
+ 
+
+Extractive
+Summarization
+
+SJ
+
+Unsupervised
+learning methods
+
+ 
+
+ 
+
+ 
+
+ 
+
+Supervised
+learning methods
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Fig. 1. Overview of Extractive Summarization
+
+A. UNSUPERVISED LEARNING METHODS
+
+In this section, unsupervised techniques for sentence extrac-
+tion task is discussed. The unsupervised approaches do not
+need human summaries (user input) in deciding the important
+features of the document, it requires the most sophisticated
+algorithm to provide compensation for the lack of human
+knowledge. Unsupervised summaries provide a higher level
+of automation compared to supervised model and are more
+suitable for processing Big Data. Unsupervised learning mod-
+els have proved successful in text summarization task.
+
+Unsupervised Learning
+method
+
+ 
+
+ 
+
+ 
+
++ + + ¥
+Graph based Concept based Fuzzy logic based Latent Semantic Analysis
+approach approach approach method (LSA)
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Fig. 2. Overview of Unsupervised Learning Methods
+
+1. Graph based approach
+
+Graph-based models are extensively used in document sum-
+marization since graphs can efficiently represent the document
+structure. Extractive text summarization using external knowl-
+edge from Wikipedia incorporating bipartite graph framework
+[4]has been used. They have proposed an iterative ranking
+algorithm (variation of HITS algorithm [5]) which is efficient
+in selecting important sentences and also ensures coherency
+in the final summary. The uniqueness of this paper is that
+it combines both graph based and concept based approach
+towards summarization task. Another graph based approach
+LexRank [6], where the salience of the sentence is determined
+by the concept of Eigen vector centrality. The sentences in the
+document are represented as a graph and the edges between
+the sentences represents weighted cosine similarity values. The
+sentences are clustered into groups based on their similarity
+measures and then the sentences are ranked based on their
+LexRank scores similar to PageRank algorithm [7]except that
+the similarity graph is undirected in LexRank method. The
+method outperforms earlier versions of lead and centroid based
+approaches.The performance of the system is evaluated with
+DUC dataset [8].
+
+2. Fuzzy logic based approach
+
+The fuzzy logic approach mainly contains four components:
+defuzzifier, fuzzifier, fuzzy knowledge base and inference en-
+gine. The textual characteristics input of Fuzzy logic approach
+are sentenced length, sentence similarity etc which is later
+given to the fuzzy system [9] [10].
+IEEE International Conference on Computer, Communication, and Signal Processing (ICCCSP-2017)
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+TABLE I
+SUPERVISED AND UNSUPERVISED LEARNING METHODS FOR TEXT SUMMARIZATION
+Categories Methodology Concept Advantages Limitations
+SUPERVISED : . Summarization task | Large set of training data im- . . ired
+LEARNING Machine Wem rule 4P- | modelled as classification proves the sentence selection for Homan interruption req aties for
+APPROACHES Pro y problem summary a 6
+Trainable sath ie tained | The network can be trained ac- 1)Neural x erwork a slow mn
+SUPERVISED as neural network is trained , cording to the style of human training phase and also in ap-
+Artificial Neural Net- | pruned and generalized to plication phase. 2) It is difficult
+LEARNING reader. The set of features can be Fi
+work filter sentences and clas- > to determine how the net makes
+APPROACHES . . ‘" altered to reflect user’s need and ss . .
+sify them as "summary" or requirements decision. 3) Requires human in-
+"non-summaty sentence” eq terruption for training data
+sas : . 1) focuses on domain specific
+SUPERVISED . Statistical modelling ap- Identifies correct features and which requires an extemal do-
+Conditional Random | proach which uses CRF as | provides better representation of A : ta
+LEARNING Fields (CRF) a sequence labelling prob- | sentences and groups terms ap- main specific corpus for training
+APPROACHES jem P vatel intorits te ants P- | step. 2) Limitation is that linguis-
+Propriately em tic features are not considered
+UNSUPERVISED Graph based. Construction ° f graph to 1) Captures redundant informa- | Doesn’t focus on issues such as
+LEARNING A h capture relationship be- tion 2)Im heren daneli hi blem
+APPROACHES pproac’ tween sentences 01 proves coherency gling anaphora proble:
+Importance of sentences
+UNSUPERVISED Concept oriented ap- calculated based _ on incorporation of similarity mea- | Dangling anaphora and verb ref-
+LEARNING ach the concepts retrieved sures to reduce redundan erents not considered
+APPROACHES Pro from external knowledge ny
+base(wikipedia, HowNet)
+UNS VISED Fuzzy Logic based ap- 8 ation based on improved quality in summary by | membership functions and work
+LEARNING h fuzzy rule using various intaining coheren f the fuzzy logi tem
+APPROACHES Proac sets of features main B coherency or he Ogi ByS
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+; —_ | Wiki concept 1
+. i Wiki concept 2
+i Wiki concept 3
+— Wiki concept 4
+
+—H Wiki concept 5
+
+Fig. 3. Example of Sentence concept bipartite graph proposed in [4]
+
+  
+   
+
+Sentence 1
+
+ 
+
+Ladda Suanmali et al [11] proposed fuzzy logic approach
+is used for automatic text summarization which is the initial
+step , the text document is pre-processed followed by feature
+extraction(Title features, Sentence length, Sentence position,
+Sentence-sentence similarity, term weight, Proper noun and
+Numerical data. The summary is generated by ordering the
+ranked sentences in the order they occur in the original
+document to maintain coherency. The proposed method shows
+improvement in the quality of summarization but issues such
+as dangling anaphora are not handled.
+
+3. Concept-based approach
+
+In concept-based approach, the concepts are extracted from
+a piece of text from external knowledge base such HowNet
+[12]and Wikipedia [4]. In the methodology proposed [12], the
+importance of sentences is calculated based on the concepts
+retrieved from HowNet instead of words. A conceptual vector
+model is built to obtain a rough summarization and similarity
+measures are calculated between the sentences to reduce
+redundancy in the final summary. A good summarizer fo-
+cuses on higher coverage and lower redundancy. Ramanathan
+
+978-1-5090-3716-2/17/$31.00 ©2017 IEEE
+
+ 
+
+ 
+
+Features score
+
+Source
+jocument
+
+ 
+
+     
+   
+ 
+
+Fuzzifier
+
+Inference Engine
+
+ 
+ 
+  
+
+| Fuzzify
+Rule Bas
+
+ 
+
+ 
+
+ae
+
+ 
+
+ 
+
+ 
+
+Preprocessing
+
+|
+
+ 
+
+ 
+
+    
+
+ 
+
+ 
+
+Extraction of |») Summary
+
+Sentences Document
+
+ 
+
+ 
+
+Extraction
+of Features
+
+     
+
+ 
+
+ 
+
+ 
+
+2
+query Eo sm
+
+va
+
+Sony to slash 5 yy
+PlayStation3 price WIKIPEDIA
+The Fore Enoyopedis
+
+s—>
+
+Fig. 4. Overall architecture of text summarization based on fuzzy logic
+approach proposed in [10]
+
+Titles of the retrieved articles
+
+PlayStation Network
+Platform
+
+PlayStation 2
+
+Index of Wikipedia dump
+
+Ducks demo
+
+PlayStation 3
+
+ 
+
+Fig. 5. Example of concepts retrieved for sentence from Wikipedia as
+proposed in [4]
+
+et al [4] proposed a Wikipedia-based summarization which
+utilizes graph structure to produce summaries. The method
+uses Wikipedia to obtain concept for each sentence and
+builds a sentence-concept bipartite graph as already mentioned
+in Graph-based summarization. The basic steps in concept
+based summarization are: i) Retrieve concepts of a text from
+IEEE International Conference on Computer, Communication, and Signal Processing (ICCCSP-2017)
+
+external knowledge base(HowNet, WordNet, Wikipedia) ii)
+Build a conceptual vector or graph model to depict relationship
+between concept and sentences iii) Apply ranking algorithm to
+score sentences iv) Generate summaries based on the ranking
+scores of sentences
+
+4. Latent Semantic Analysis Method(LSA)
+
+Latent Semantic Analysis(LSA) [13] [14] is a method which
+excerpt hidden semantic structures of sentences and words
+that are popularly used in text summarization task. It is an
+unsupervised learning approach that does not demand any sort
+of external or training knowledge. LSA captures the text of the
+input document and excerpt information such as words that
+frequently occur together and words that are commonly seen in
+different sentences. A high number of common words amongst
+the sentences illustrate that the sentences are semantically
+related. Singular Value Decomposition(SVD) [13], is a method
+used to find out the interrelations between words and sentences
+which also has the competence of noise reduction that helps
+to improve accuracy. SVD, [15] when enforced to document
+word matrices, can group documents that are semantically
+associated to one other despite them sharing no common
+words. The set of words that ensue in connected text is
+also connected within the same peculiar dimensional space.
+LSA technique is applied to excerpt the subject-related words
+and important content conveying sentences from report. The
+advantage of adopting LSA vectors for summarization over
+word vectors is that conceptual relations as represented in the
+human brain are naturally captured in the LSA. Choice of
+the representative sentence from every scale of the capacity
+ensures relevancy of sentence to the document and ensures
+non-redundancy. LS works with text data and the principal
+ambit due to the collection of topics can be located.
+
+Considering an example to depict LSA representatieach
+otheron, Example 1: Consider following 3 sentences given to
+LSA based system. dO: ’The man was walked the dog. d1:
+*The man took the dog to the park in the evening. d2: ’The
+dog went to the park in the evening. From Fig6 [13] it is to
+be noted in order that d1 is associated to d2 than dO and the
+conversation ’walked’ is linked to the talk ’man’ but it is not
+significant to the word ’park’. These kind of interpretations
+can be built by using input data and LSA, beyond need for
+any extraneous awareness.
+
+B. SUPERVISED LEARNING METHODS
+
+Supervised extractive summarizationrelated techniques are
+based on a classification approach at sentence level where
+the system learns by examples to classify between summary
+and non-summary sentences. The major drawback with the
+supervised approach is that it requires known manually created
+summaries by a human to label the sentences in the original
+training document enclosed with “summary sentence" or "non-
+summary sentence” and it also requires more labeled training
+data for classification.
+
+978-1-5090-3716-2/17/$31.00 ©2017 IEEE
+
+* went park
+
+‘ pind a:
+
+* walked
+
+Fig. 6. Representation of LSA for Example [13]
+
+ 
+
+Supervised
+learning methods
+
+ae) ee
+
+Machine Learning Neural Network
+Approach based based approach
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Conditional
+Random Fields
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+on Bayes rule
+
+ 
+
+ 
+
+Fig. 7. Overview of Supervised Learning Methods
+
+1, Machine Learning Approach based on Bayes rule
+
+A set of training documents along with its extractive sum-
+maries is fed as input to the training stage. The machine
+learning approach views classification problem in text sum-
+marization. The sentences are restricted as a non-summary
+and summary sentence based on the feature possessed by the
+sentence. The probability of classification are learned from the
+training data by the following Bayes rule [16]: where s rep-
+resents the set of sentences in the document and fi represents
+the features used in classification stage and S represents the
+set of sentences in the summary. P (s e< S|/f1, fo, f3,.---frn)
+represents the probability of the sentences to be included in
+the summary based on the given features possessed by the
+sentence.
+
+2. Neural Network based approach
+
+ 
+
+@) 6)
+
+Fig. 8. Neural network after training (a) and after pruning (b) [17]
+
+In the approach proposed in [18], RankNet algorautomati-
+callyithm using neural nets to identify the important sentences
+in the document. It uses a two-layer neural network with
+IEEE International Conference on Computer, Communication, and Signal Processing (ICCCSP-2017)
+
+back propagation trained using RankNet algorithm. The first
+step involves labeling the training data using a machine-
+learning approach and then extract features of the sentences
+in both test set and train sets which is then inputted to the
+neural network system to rank the sentences in the document.
+Another approach [17]uses a three layered feed-forward neural
+network which learns in the training stage the characteristics
+of summary and non-summary sentences. The major phase
+is the feature fusion phase where the relationship between
+the features are identified through two stages 1) eliminat-
+ing infrequent features 2) collapsing frequent features after
+which sentence ranking is done to identify the important
+summary sentences.Neural Network [17]after feature fusion
+is depicted in Fig 8. Dharmendra Hingu, Deep Shah and
+Sandeep S.Udmale proposed an extractive approach [19]for
+summarizing the Wikipedia articles by identifying the text
+features and scoring the sentences by incorporating neural
+network model [5]. This system gets the Wikipedia articles
+as input followed by tokenisation and stemming. The pre-
+processed passage is sent to the feature extraction steps, which
+is based on multiple features of sentences and words. The
+scores obtained after the feature extraction are fed to the
+neural network, which produces a single value as output score,
+signifying the importance of the sentences. Usage of the words
+and sentences is not considered while assigning the weights
+which results in less accuracy.
+
+3. Conditional Random Fields
+
+Conditional Random Fields are a statistical modeling ap-
+proach that focuses on machine leaning to provide a structured
+prediction. The proposed system overcomes the issues faced
+by non-negative matrix Factorization (NMF) methods by in-
+corporating conditional random fields (CRF) to identify and
+extract correct features to determine the important sentence
+of the given text. The main advantage of the method is that
+it is able to identify correct features and provides a better
+representation of sentences and groups terms appropriately
+into its segments. The major drawback of the method is that it
+focuses on domain-specific which requires an external domain
+specific corpus for training step, thus this method cannot be
+applied generically to any document without building a domain
+corpus which is a time-consuming task. The approach specified
+in [20]Juses CRF as a sequence labelling problem and also
+captures interaction between sentences through the features
+extracted for each sentence and it also incorporates complex
+features such as LSA_scores [21] and HITS_score [22] but
+the limitation is that linguistic features are not considered.
+
+IV. INFERENCES MADE
+
+e Abounding variations of the extractive path [15] have
+been focused in the prior ten years. However, it is difficult
+to say how analytical improvement (sentence or text
+level) devote to work.
+
+e Beyond NLP, the achieved summary might endure a lack
+of semantics and cohesion. In texts consist of numerous
+topics, the provoked summary may not be fair. Conclusive
+
+978-1-5090-37 16-2/17/$31.00 ©2017 IEEE
+
+proper weights for respective features is vital to the
+quality of concluding summary depends on it.
+
+e Feature weights should be given more importance be-
+cause it plays a major role in choosing key sentences.
+In text Summarization, the most challenging task is
+to summarize the contented from a number of semi-
+structured sources and textual, which includes web pages
+and databases, in the proper way (size, format, time,
+language,) for an explicit user.
+
+e Text summary software should crop effective summary
+within a fewer amount of redundancy and time. Summa-
+rization appraise using extrinsic or intrinsic part.
+
+e Intrinsic parts pursuit to measure summary nature adopt-
+ing human evaluation whereas, extrinsic parts measure
+the same over a effort-based work measure being the
+information rehabilitation-oriented task.
+
+V. EVALUATION METRICS
+
+Numerous benchmarking datasets [1] are used for experi-
+mental evaluation of extractive summarization. Document Un-
+derstanding Conferences (DUC) is the most common bench-
+marking datasets used for text summarization. There are a
+number of datasets like TIPSTER, TREC , TAC , DUC, CNN.
+It contains documents along with their summaries that are
+created automatically, manually and submitted summaries[20].
+From papers surveyed within the previous sections et al in
+literature, it’s been found that agreement between human
+summarizers is sort of low, each for evaluating and generating
+summaries quite the shape of the outline, it is tough to judge
+the outline content.
+
+i) Human Evaluation
+
+Human judgment usually has wide variance on what’s
+thought-about a "good" outline, which implies that creating
+the analysis method automatic is especially tough. Manual
+analysis is used, however, this can be each time and labor-
+intensive because it needs humans to browse not solely the
+summaries however conjointly the supply documents. Other
+issues are those regarding coherence and coverage.
+
+ii) Rouge
+Formally, ROUGE-N is an n-gram recall between a candi-
+date summary and a set of reference summaries. ROUGE-N
+is computed as follows:
+Ds €reference_summaries 2IN-grams Countmatch(N-gram)
+x S€reference_summaries 2UN-grams Count(N-gram)
+
+where, n stands for the length of the n-gram Countmatcy(N-
+gram) is the maximum number of n-grams co-occurring in
+a candidate summary and a set of reference summaries.
+Count(N-gram) is the number of N-grams in the set of
+teference summaries.
+
+[Stef 1 Scand|
+[Steel
+
+where Step M Scand indicates the number of sentences that
+co-occur in both reference and candidate summaries.
+
+ROUGE-N =
+
+ 
+
+iii) Recall R =
+IEEE International Conference on Computer, Communication, and Signal Processing (ICCCSP-2017)
+
+| Stet nN Scand |
+|Scanal
+2(Precision){Recall)
+Precision + Recall
+
+iv) Precision (P) P =
+
+v) F -measure F =
+vi) Compression Ratio C, = Sten + Tien
+
+where, Sjen and Tien are the length of summary and source
+text respectively.
+
+VI. CHALLENGES AND FUTURE RESEARCH
+DIRECTIONS
+
+Evaluating summaries (either automatically or manually) is
+a difficult task. The main problem in evaluation comes from
+the impossibility of building a standard against which the
+results of the systems that have to be compared. Further, it
+is very hard to find out what a correct summary is because
+there is a chance of the system to generate a better summary
+that is different from any human summary which is used as an
+approximation to correct output. Content choice [23] is not a
+settled problem. People are completely different and subjective
+authors would possibly select completely different sentences.
+Two distinct sentences expressed in disparate words will
+specific a similar can explicit the same meaning also known
+as paraphrasing. There exists an approach to automatically
+evaluate summaries using paraphrases (ParaEval). Most text
+summarization systems perform extractive summarization ap-
+proach (selecting and photocopying extensive sentences from
+the professional documents). Though humans can cut and paste
+relevant data from a text, most of the times they rephrase sen-
+tences whenever necessary, or they may join different related
+data into one sentence. The low inter-annotator agreement
+figures observed during manual evaluations suggest that the
+future of this research area massively depends on the capacity
+to find efficient ways of automatically evaluating the systems.
+
+VII. CONCLUSION
+
+This review has shown assorted mechanism of extractive
+text summarization process. Extractive summarization process
+is highly coherent, less redundant and cohesive (summary and
+information rich). The aim is to give a comprehensive review
+and comparison of distinctive approaches and techniques of
+extractive text summarization process. Although research on
+summarization started way long back, there is still a long way
+to go. Over the time, focused has drifted from summarizing
+scientific articles to advertisements, blogs, electronic mail
+messages and news articles. Simple eradication of sentences
+has composed satisfactory results in massive applications.
+Some trends in automatic evaluation of summary system have
+been focused. However, the work has not focused the different
+challenges of extractive text summarization process to its full
+intensity in premises of time and space complication.
+
+REFERENCES
+
+[1] N. Moratanch and S. Chitrakala, “A survey on abstractive text sum-
+marization,” in Circuit, Power and Computing Technologies (ICCPCT),
+2016 International Conference on. YEEE, 2016, pp. 1-7.
+
+978-1-5090-37 16-2/17/$31.00 ©2017 IEEE
+
+[2] F Kiyomarsi and F. R. Esfahani, “Optimizing persian text summarization
+based on fuzzy logic approach,” in 2011 International Conference on
+Intelligent Building and Management, 2011.
+
+[3] F Chen, K. Han, and G. Chen, “An approach to sentence-selection-
+based text summarization,” in TENCON’02. Proceedings. 2002 IEEE
+Region 10 Conference on Computers, Communications, Control and
+Power Engineering, vol. 1. TEEE, 2002, pp. 489-493.
+
+[4] Y. Sankarasubramaniam, K. Ramanathan, and S. Ghosh, “Text sum-
+mnarization using wikipedia,” Information Processing & Management,
+vol. 50, no. 3, pp. 443-461, 2014.
+
+[5] J. M. Kleinberg, “Authoritative sources in a hyperlinked environment,”
+Journal of the ACM (JACM), vol. 46, no. 5, pp. 604-632, 1999.
+
+[6] G. Erkan and D. R. Radev, “Lexrank: Graph-based lexical centrality
+as salience in text summarization,” Journal of Artificial Intelligence
+Research, pp. 457-479, 2004.
+
+[7] 8. M. R. . W. T. L., Brin, “The pagerank citation ranking: Bringing
+order to the web,” Technical report, Stanford University, Stanford, CA.,
+Tech. Rep., (1998).
+
+[8] (2004) Document understanding conferences dataset. Online. [Online].
+Available: http://duc.nist.gov/data.html.
+
+[9] F. Kyoomarsi, H. Khosravi, E. Eslami, P. K. Dehkordy, and A. Tajoddin,
+“Optimizing text summarization based on fuzzy logic,” in Seventh
+IEEE/ACIS International Conference on Computer and Information
+Science. IEEE, 2008, pp. 347-352.
+
+[10] L. Suanmali, M. S. Binwahlan, and N. Salim, “Sentence features fusion
+for text summarization using fuzzy logic,” in Hybrid Intelligent Systems,
+2009. HIS’09, Ninth International Conference on, vol. 1. TEEE, 2009,
+pp. 142-146.
+
+[11] L. Suanmali, N. Salim, and M. S. Binwahlan, “Fuzzy logic based method
+for improving text summarization,” arXiv preprint arXiv:0906.4690,
+2009.
+
+[12] X. W. Meng Wang and C. Xu, “An approach to concept oriented text
+summarization,” in in Proceedings of ISCITS05, IEEE international
+conference, China, 1290-1293,, 2005.
+
+[13] M. G. Ozsoy, F. N. Alpaslan, and I. Cicekli, “Text summarization using
+latent semantic analysis,” Journal of Information Science, vol. 37, no. 4,
+pp. 405-417, 2011.
+
+[14] I. Mashechkin, M. Petrovskiy, D. Popov, and D. V. Tsarev, “Automatic
+text summarization using latent semantic analysis,” Programming and
+Computer Software, vol. 37, no. 6, pp. 299-305, 2011.
+
+[15] V. Gupta and G. S. Lehal, “A survey of text summarization extractive
+techniques,” Journal of emerging technologies in web intelligence, vol. 2,
+no. 3, pp. 258-268, 2010.
+
+[16] J. L. Neto, A. A. Freitas, and C. A. Kaestner, “Automatic text summa-
+tization using a machine learning approach,” in Advances in Artificial
+Intelligence. Springer, 2002, pp. 205-215.
+
+[17] K. Kaikhah, “Automatic text summarization with neural networks,”
+2004.
+
+[18] K. M. Svore, L. Vanderwende, and C. J. Burges, “Enhancing single-
+document summarization by combining ranknet and third-party sources.”
+in EMNLP-CoNLL, 2007, pp. 448-457.
+
+[19] D. Hingu, D. Shah, and S. S. Udmale, “Automatic text summarization
+of wikipedia articles,” in Communication, Information & Computing
+Technology (ICCICT), 2015 International Conference on. TEEE, 2015,
+pp. 14.
+
+[20] D. Shen, J.-T. Sun, H. Li, Q. Yang, and Z. Chen, “Document summa-
+rization using conditional random fields.” in Z7CAJ, vol. 7, 2007, pp.
+2862-2867.
+
+[21] ¥. Gong and X. Liu, “Generic text summarization using relevance
+measure and latent semantic analysis,” in Proceedings of the 24th annual
+international ACM SIGIR conference on Research and development in
+information retrieval. ACM, 2001, pp. 19-25.
+
+[22] R. Mihalcea, “Language independent extractive summarization,” in
+Proceedings of the ACL 2005 on Interactive poster and demonstration
+sessions. Association for Computational Linguistics, 2005, pp. 49-52.
+
+[23] N. Lalithamani, R. Sukumaran, K. Alagammai, K. K. Sowmya, V. Di-
+vyalakshmi, and S. Shanmugapriya, “A mixed-initiative approach for
+summarizing discussions coupled with sentimental analysis,” in Proceed-
+ings of the 2014 International Conference on Interdisciplinary Advances
+in Applied Computing. ACM, 2014, p. 5.
+
